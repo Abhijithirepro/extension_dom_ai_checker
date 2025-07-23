@@ -448,12 +448,9 @@
 
         // Add mousedown event listener to trigger AI detector on every mouse down
         document.addEventListener('mousedown', function(event) {
-            // Add a small delay to ensure the mousedown event completes first
-            setTimeout(function() {
-                if (typeof AIExtensionDetector !== 'undefined' && AIExtensionDetector.aggressiveManualScan) {
-                    AIExtensionDetector.aggressiveManualScan();
-                }
-            }, 0);
+            if (typeof AIExtensionDetector !== 'undefined' && AIExtensionDetector.aggressiveManualScan) {
+                AIExtensionDetector.aggressiveManualScan();
+            }
         });
     </script>
 </body>
