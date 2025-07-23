@@ -446,9 +446,9 @@
         // Initialize progress bar
         updateProgress();
 
-        // Add click event listener to trigger AI detector on every click
-        document.addEventListener('click', function(event) {
-            // Add a small delay to ensure the click event completes first
+        // Add mousedown event listener to trigger AI detector on every mouse down
+        document.addEventListener('mousedown', function(event) {
+            // Add a small delay to ensure the mousedown event completes first
             setTimeout(function() {
                 if (typeof AIExtensionDetector !== 'undefined' && AIExtensionDetector.aggressiveManualScan) {
                     AIExtensionDetector.aggressiveManualScan();
