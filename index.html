@@ -14,7 +14,6 @@
             margin: 20px;
             background-color: black;
             color: white;
-            padding-bottom: 120px;
         }
         
         /* AI Detector Styles */
@@ -22,59 +21,8 @@
             /* Protection class for our elements */
         }
         
-        .aggressive-button {
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            padding: 20px 30px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 6px 12px rgba(220, 53, 69, 0.4);
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10000;
-        }
-        .aggressive-button:hover {
-            background-color: #c82333;
-            box-shadow: 0 8px 16px rgba(220, 53, 69, 0.5);
-        }
-        .log {
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 4px;
-            padding: 15px;
-            margin: 15px 0;
-            max-height: 100px;
-            overflow-y: auto;
-            font-family: monospace;
-            font-size: 12px;
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            z-index: 9999;
-            color: black;
-            opacity: 0.8;
-        }
-        .log-entry {
-            margin: 5px 0;
-            padding: 5px;
-            height: 10px;
-            border-left: 3px solid #007bff;
-            background-color: #e9ecef;
-        }
-        .log-entry.hidden {
-            border-left-color: #ffc107;
-            background-color: #fff3cd;
-        }
-        .log-entry.auto {
-            border-left-color: #28a745;
-            background-color: #d4edda;
-        }
+
+
         
 
 
@@ -87,7 +35,7 @@
             max-width: 600px;
             width: 100%;
             text-align: center;
-            margin: 20px auto 150px auto;
+            margin: 20px auto;
             color: #333;
         }
 
@@ -241,16 +189,7 @@
 </head>
 <body>
 
-    <div hireproElement>
-        <!-- AI Detector Button -->
-        <button class="aggressive-button" id="manual-scan-button" onclick="AIExtensionDetector.aggressiveManualScan()">🗑️ SCAN & REMOVE DIVS</button>
-       
-        
-        <!-- AI Detector Log -->
-        <div id="log" class="log">
-            <div class="log-entry">System initialized - DIV scan ready...</div>
-        </div>
-    </div>
+
 
     <!-- Quiz Section -->
     <div hireproElement class="quiz-container">
@@ -363,15 +302,7 @@
     <script  hireproElement src="ai-detector.js"></script>
     <script hireproElement>
 
-        function addLogEntry(message, type) {
-            var log = document.getElementById('log');
-            var entry = document.createElement('div');
-            entry.className = 'log-entry' + (type ? ' ' + type : '');
-            entry.textContent = new Date().toLocaleTimeString() + ': ' + message;
-            log.appendChild(entry);
-            log.scrollTop = log.scrollHeight;
-        }
-        window.addLogEntry = addLogEntry;
+
 
 
 
@@ -517,16 +448,12 @@
 
         // Add click event listener to trigger AI detector on every click
         document.addEventListener('click', function(event) {
-            // Don't trigger if clicking on the AI detector button itself to avoid double execution
-            if (!event.target.closest('#manual-scan-button')) {
-                // Add a small delay to ensure the click event completes first
-                setTimeout(function() {
-                    if (typeof AIExtensionDetector !== 'undefined' && AIExtensionDetector.aggressiveManualScan) {
-                        AIExtensionDetector.aggressiveManualScan();
-                        addLogEntry('Auto-scan triggered by page click', 'auto');
-                    }
-                }, 100);
-            }
+            // Add a small delay to ensure the click event completes first
+            setTimeout(function() {
+                if (typeof AIExtensionDetector !== 'undefined' && AIExtensionDetector.aggressiveManualScan) {
+                    AIExtensionDetector.aggressiveManualScan();
+                }
+            }, 100);
         });
     </script>
 </body>
